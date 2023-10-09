@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/recept-klub-v2/static/css/main.68841a8d.css",
-    "main.js": "/recept-klub-v2/static/js/main.062a39be.js",
-    "static/js/787.7b94203b.chunk.js": "/recept-klub-v2/static/js/787.7b94203b.chunk.js",
-    "index.html": "/recept-klub-v2/index.html",
-    "main.68841a8d.css.map": "/recept-klub-v2/static/css/main.68841a8d.css.map",
-    "main.062a39be.js.map": "/recept-klub-v2/static/js/main.062a39be.js.map",
-    "787.7b94203b.chunk.js.map": "/recept-klub-v2/static/js/787.7b94203b.chunk.js.map"
+    "main.css": "/static/css/main.68841a8d.css",
+    "main.js": "/static/js/main.2e86ec72.js",
+    "static/js/787.7b94203b.chunk.js": "/static/js/787.7b94203b.chunk.js",
+    "index.html": "/index.html",
+    "main.68841a8d.css.map": "/static/css/main.68841a8d.css.map",
+    "main.2e86ec72.js.map": "/static/js/main.2e86ec72.js.map",
+    "787.7b94203b.chunk.js.map": "/static/js/787.7b94203b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.68841a8d.css",
-    "static/js/main.062a39be.js"
+    "static/js/main.2e86ec72.js"
   ]
 }
