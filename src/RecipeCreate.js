@@ -12,7 +12,7 @@ export function transformToStructure(elements, type) {
         return dataType === type;
       })
       .reduce((acc, [kulcs, ertek]) => {
-        const [_, name, index] = kulcs.split("-");
+        const [name, index] = kulcs.split("-");
         return {
           ...acc,
           [index]: acc[index]
