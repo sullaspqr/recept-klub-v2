@@ -27,7 +27,7 @@ export function RecipeEdit() {
     setPending(true);
     fetchRecipeBySlug();
     setPending(false);
-  }, []);
+  }, [fetchRecipeBySlug]);
 
   if (isPending || !recipe) {
     return <Spinner />;
