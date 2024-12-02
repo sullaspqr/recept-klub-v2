@@ -1,0 +1,81 @@
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { Spinner } from "./Spinner";
+import { useParams } from "react-router-dom";
+
+export function RecipeSingle() {
+    const [recipe, setRecipe] = useState();
+    const [selectedStepIndex, setSelectedStepIndex] = useState(0);
+    const { recipeSlug } = useParams(); // Újraírtuk ezt a sort
+  
+    useEffect(() => {
+      fetch(`https://recept-app.fly.dev/api/recipes/${recipeSlug}`)
+        .then((res) => res.json())
+        .then(setRecipe);
+    }, [recipeSlug]); // Itt is módosítanod kell a függvényfüggőséget
+  
+    if (!recipe) {
+      return <Spinner />;
+    }
+
+  return (
+    <div>
+      <div className="row m-2">
+        <div className="col-md-8">
+          <h1>{recipe.name}</h1>
+
+          <div className="p-2">
+            <h3>Hozzávalók:</h3>
+            <ul className="list-group list-group-flush">
+              {recipe.ingredients.map((ingredient, i) => (
+                <li key={i} className="list-group-item">
+                  {ingredient.name} ({ingredient.quantity})
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="col-md-4 m-auto">
+          <img
+            width="100%"
+            className="card-img-top mb-2"
+            src={`https://recept-app.fly.dev/static/images/${recipe.imageURL}`}
+            alt="kep"
+          />
+        </div>
+      </div>
+      <div className="row p-3">
+        <div className="col-md-9 border-right">
+          <h3>Elkészítés:</h3>
+          <ul className="list-group list-group-flush">
+            {recipe.steps.map((step, i) => (
+              <li
+                key={i}
+                className={"list-group-item " + (selectedStepIndex === i ? "active" : "")}
+                onClick={() => {
+                  setSelectedStepIndex(i);
+                }}
+              >
+                {step.content}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="col-md-3 border-right">
+          <div className="card">
+            <div className="card-body">
+              <h2>
+                <FontAwesomeIcon icon={faClock} className="mr-2" />
+                {recipe.steps[selectedStepIndex]?.timer ? recipe.steps[selectedStepIndex].timer + " perc" : "-"}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default RecipeSingle;
